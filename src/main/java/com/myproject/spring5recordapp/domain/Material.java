@@ -1,8 +1,12 @@
 package com.myproject.spring5recordapp.domain;
 
+import lombok.*;
+
 import java.math.BigDecimal;
 import javax.persistence.*;
 
+@Data
+@EqualsAndHashCode(exclude = {"record"})
 @Entity
 public class Material {
 
@@ -19,45 +23,21 @@ public class Material {
     @ManyToOne
     private Record record;
 
-    public long getId() {
-        return id;
+    public Material() {
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
-
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
+    public Material(String description, BigDecimal amount, UnitOfMeasure uom) {
         this.description = description;
-    }
-
-    public BigDecimal getAmount() {
-        return amount;
-    }
-
-    public void setAmount(BigDecimal amount) {
         this.amount = amount;
+        this.uom = uom;
     }
 
-    public Record getRecord() {
-        return record;
-    }
-
-    public void setRecord(Record record) {
+    public Material(String description, BigDecimal amount, UnitOfMeasure uom, Record record) {
+        this.description = description;
+        this.amount = amount;
+        this.uom = uom;
         this.record = record;
     }
 
-    public UnitOfMeasure getUom() {
-        return uom;
-    }
 
-    public void setUom(UnitOfMeasure uom) {
-        this.uom = uom;
-    }
 }

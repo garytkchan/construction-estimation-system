@@ -1,8 +1,13 @@
 package com.myproject.spring5recordapp.domain;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 import javax.persistence.*;
 import java.util.Set;
 
+@Data
+@EqualsAndHashCode(exclude = {"records"})
 @Entity
 public class ProjectType {
 
@@ -14,27 +19,5 @@ public class ProjectType {
     @ManyToMany(mappedBy = "projectTypes")
     private Set<Record> records;
 
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Set<Record> getRecords() {
-        return records;
-    }
-
-    public void setRecords(Set<Record> records) {
-        this.records = records;
-    }
 }

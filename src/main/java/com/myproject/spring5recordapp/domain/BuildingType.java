@@ -4,5 +4,5 @@ import javax.persistence.Entity;
 
 public enum BuildingType {
 
-
+        HOUSE, CONDO, APARTMENT, BUSINESS, OTHER;
 }

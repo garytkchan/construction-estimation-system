@@ -1,0 +1,10 @@
+INSERT INTO project_Type (description) VALUES ('New Construction');
+INSERT INTO project_Type (description) VALUES ('Renovation');
+INSERT INTO project_Type (description) VALUES ('Demolition');
+INSERT INTO unit_of_measure (description) VALUES ('Set');
+INSERT INTO unit_of_measure (description) VALUES ('Piece');
+INSERT INTO unit_of_measure (description) VALUES ('Box');
+INSERT INTO unit_of_measure (description) VALUES ('Pack');
+INSERT INTO unit_of_measure (description) VALUES ('Roll');
+INSERT INTO unit_of_measure (description) VALUES ('Bundle');
+INSERT INTO unit_of_measure (description) VALUES ('Other');
