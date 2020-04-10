@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Display Estimation</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"
+          th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}">
+
+    <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous" th:href="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+
+</head>
+<body>
+<div class="container-fluid" style="margin-top: 20px">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="pannel-group">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h1 class="panel-title" th:text="${record.jobName}">Job Name</h1>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <h5>Project Type:</h5>
+                            </div>
+                            <div class="col-md-9">
+                                <ul>
+                                    <li th:remove="all">Demo</li>
+                                    <li th:remove="all">Reno</li>
+                                    <li th:each="projectType : ${record.projectTypes}" th:text="${projectType.getDescription()}">New</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <h5>Building Type:</h5>
+                            </div>
+                            <div class="col-md-3">
+                                <p th:text="${record.buildingType}">Apartment</p>
+                            </div>
+                            <div class="col-md-3">
+                                <h5>Estimator:</h5>
+                            </div>
+                            <div class="col-md-3">
+                                <p th:text="${record.estimator}">Carlos Sammuel</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <h5>Estimation Date:</h5>
+                            </div>
+                            <div class="col-md-3">
+                                <p th:text="${record.dateToday}">3/22/2012</p>
+                            </div>
+                            <div class="col-md-3">
+                                <h5>Work Scope:</h5>
+                            </div>
+                            <div class="col-md-3">
+                                <p th:text="${record.workScope}">Bathroom</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <h5>Est. Start Date:</h5>
+                            </div>
+                            <div class="col-md-3">
+                                <p th:text="${record.dateStart}">11/23/2010</p>
+                            </div>
+                            <div class="col-md-3">
+                                <h5>Duration</h5>
+                            </div>
+                            <div class="col-md-3">
+                                <p th:text="${record.duration}">14 days</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h1 class="panel-title" >Materials</h1>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <ul>
+                                    <li th:remove="all">1 box of screw(sample)</li>
+                                    <li th:each="material : ${record.materials}"
+                                        th:text="${material.getDescription() +
+                                        '   ------   ' + material.getAmount() + ' ' + material.uom.getDescription()}">Screw</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h1 class="panel-title" >Labor</h1>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p th:text="${record.labor}">14 workers</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h1 class="panel-title" >Notes</h1>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p th:text="${record.notes.recordNotes}">Special Notes</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

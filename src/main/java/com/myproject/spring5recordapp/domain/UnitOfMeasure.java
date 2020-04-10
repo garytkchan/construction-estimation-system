@@ -16,4 +16,11 @@ public class UnitOfMeasure {
     private long id;
     private String description;
 
+    public UnitOfMeasure() {
+    }
+
+    protected boolean canEqual(final Object other) {
+        return other instanceof UnitOfMeasure;
+    }
+
 }
