@@ -4,6 +4,7 @@ import com.myproject.spring5recordapp.commands.RecordCommand;
 import com.myproject.spring5recordapp.converters.RecordCommandToRecord;
 import com.myproject.spring5recordapp.converters.RecordToRecordCommand;
 import com.myproject.spring5recordapp.domain.Record;
+import com.myproject.spring5recordapp.exceptions.NotFoundException;
 import com.myproject.spring5recordapp.repositories.RecordRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -40,11 +41,11 @@ public class RecordServiceImpl implements RecordService {
     }
 
     @Override
-    public Record findById(long l) {
+    public Record findById(Long l) {
 
         Optional<Record> recordOptional = recordRepository.findById(l);
         if (!recordOptional.isPresent()) {
-            throw new RuntimeException("Record not found");
+            throw new NotFoundException("Record not found for id: " + l.toString());
         }
         return recordOptional.get();
     }
@@ -60,5 +61,16 @@ public class RecordServiceImpl implements RecordService {
         log.debug("Saved Record ID: " + savedRecord.getId());
         return  recordToRecordCommand.convert(savedRecord);
 
+    }
+
+    @Override
+    @Transactional
+    public RecordCommand findCommandById(Long l) {
+        return recordToRecordCommand.convert(findById(l));
+    }
+
+    @Override
+    public void deleteById(Long idToDelete) {
+        recordRepository.deleteById(idToDelete);
     }
 }

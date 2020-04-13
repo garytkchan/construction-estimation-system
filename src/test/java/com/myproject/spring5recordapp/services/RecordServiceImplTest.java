@@ -60,6 +60,7 @@ class RecordServiceImplTest {
         Set<Record> records = recordService.getRecords();
         assertEquals(records.size(), 1);
         verify(recordRepository, times(1)).findAll();
+        verify(recordRepository, never()).findById(anyLong());
     }
 }
 */

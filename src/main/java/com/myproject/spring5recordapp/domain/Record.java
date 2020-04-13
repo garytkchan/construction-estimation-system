@@ -45,8 +45,9 @@ public class Record {
 
     public void setNotes(Notes notes) {
 
-        this.notes = notes;
-        notes.setRecord(this);
+            this.notes = notes;
+            notes.setRecord(this);
+
     }
 
     public Record addMaterial(Material material) {

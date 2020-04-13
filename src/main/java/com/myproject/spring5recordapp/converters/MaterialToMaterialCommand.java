@@ -3,7 +3,6 @@ package com.myproject.spring5recordapp.converters;
 import lombok.Synchronized;
 import com.myproject.spring5recordapp.commands.MaterialCommand;
 import com.myproject.spring5recordapp.domain.Material;
-import lombok.Synchronized;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
@@ -26,9 +25,14 @@ public class MaterialToMaterialCommand implements  Converter<Material, MaterialC
         }
         MaterialCommand materialCommand = new MaterialCommand();
         materialCommand.setId((source.getId()));
+
+        if (source.getRecord() != null) {
+            materialCommand.setRecordId(source.getRecord().getId());
+        }
+
         materialCommand.setAmount(source.getAmount());
         materialCommand.setDescription(source.getDescription());
-        materialCommand.setUnitOfMeasure(uomConverter.convert(source.getUom()));
+        materialCommand.setUom(uomConverter.convert(source.getUom()));
         return materialCommand;
     }
 }

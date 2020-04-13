@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/constructiondb
+    username: root
+    password: ROOT
+  jpa:
+    hiberate:
+      ddl-auto: validate
+
+    database: mysql
+    show-sql: true
+    properties:
+      javax:
+        persistence:
+          schema-generation:
+            create-source: metadata
+            scripts:
+              action: create
+              create-target: record_database_create.sql

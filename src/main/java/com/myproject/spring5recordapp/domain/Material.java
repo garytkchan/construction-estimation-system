@@ -5,14 +5,15 @@ import lombok.*;
 import java.math.BigDecimal;
 import javax.persistence.*;
 
-@Data
+@Getter
+@Setter
 @EqualsAndHashCode(exclude = {"record"})
 @Entity
 public class Material {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     private String description;
     private BigDecimal amount;

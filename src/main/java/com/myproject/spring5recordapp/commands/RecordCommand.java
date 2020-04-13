@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -17,15 +18,31 @@ import java.util.Set;
 public class RecordCommand {
 
     private Long id;
+
+    @Size(min = 3, max = 255)
     private String jobName;
+
+    @Size(min = 3, max = 255)
     private String dateToday;
+
+    @Size(min = 3, max = 255)
     private String estimator;
+
+    @Size(min = 3, max = 255)
     private String duration;
+
+    @Size(min = 3, max = 255)
     private String dateStart;
+
+    @Size(min = 3, max = 255)
     private String workScope;
+
+    @Size(min = 3, max = 255)
     private String labor;
+
     private Set<MaterialCommand> materials = new HashSet<>();
     private BuildingType buildingType;
     private NotesCommand notes;
     private Set<ProjectTypeCommand> projectTypes = new HashSet<>();
+    private Byte[] image;
 }

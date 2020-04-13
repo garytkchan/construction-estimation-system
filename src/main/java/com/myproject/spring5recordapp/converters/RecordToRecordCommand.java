@@ -37,6 +37,9 @@ public class RecordToRecordCommand implements Converter<Record, RecordCommand> {
         command.setDateToday(source.getDateToday());
         command.setJobName(source.getJobName());
         command.setBuildingType(source.getBuildingType());
+
+        command.setImage(source.getImage());
+
         // Notes Object
         command.setNotes(notesConverter.convert(source.getNotes()));
 

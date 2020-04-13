@@ -16,6 +16,16 @@
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
             crossorigin="anonymous" th:href="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
 
+    <style>
+        .panel-heading {
+            background-image: -webkit-linear-gradient(top,darkred 0,#641E16 0%);
+        }
+
+        .panel {
+            border-color: #CACFD2 ;
+        }
+    </style>
+
 </head>
 <body>
 
@@ -66,12 +76,11 @@
                                 </div>
                                 <div class="col-md-3 form-group">
                                     <label>Building Type:</label>
-                                    <select class="form-control">
-                                        <option>House</option>
-                                        <option>Condo</option>
-                                        <option>Apartment</option>
-                                        <option>Business</option>
-                                        <option>Other</option>
+                                    <select class="form-control" th:field="*{buildingType}">
+                                        <option th:each="buildingTypeValue : ${T(com.myproject.spring5recordapp.domain.BuildingType).values()}"
+                                                th:value="${buildingTypeValue.name()}"
+                                                th:text="${buildingTypeValue.name()}"
+                                                >val</option>
                                     </select>
                                 </div>
                             </div>
@@ -97,8 +106,8 @@
                                 <div class="col-md-11 ">
                                     <h1 class="panel-title">Materials</h1>
                                 </div>
-                                <div class="col-md-1">
-                                    <a class="btn btn-default" href="#" role="button">Edit</a>
+                                <div class="col-md-0">
+                                    <a class="btn btn-default btn-sm" href="#" role="button">Edit</a>
                                 </div>
                             </div>
                         </div>

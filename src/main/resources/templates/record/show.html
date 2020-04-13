@@ -16,38 +16,63 @@
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
             crossorigin="anonymous" th:href="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
 
+    <style>
+        .panel-heading {
+            background-image: -webkit-linear-gradient(top,darkred 0,#641E16 0%);
+        }
+
+        .panel {
+            border-color: #CACFD2 ;
+        }
+    </style>
+
 </head>
 <body>
 <div class="container-fluid" style="margin-top: 20px">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
-            <div class="pannel-group">
+            <div class="panel-group">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-md-3">
                         <h1 class="panel-title" th:text="${record.jobName}">Job Name</h1>
+                    </div>
+                            <div class="col-md-offset-11">
+                                <a class="btn btn-default btn-xs" href="#"
+                                   th:href="@{'/record/' + ${record.id} + '/image'}" role="button">Change</a>
+                            </div>
+                        </div>
                     </div>
                     <div class="panel-body">
                         <div class="row">
-                            <div class="col-md-3">
-                                <h5>Project Type:</h5>
+                            <div class="col-md-6">
+                                <img src="../../static/images/4557SUnion.jpg"
+                                 th:src="@{/images/4557SUnion.jpg}"
+                                 width="200" height="150">
                             </div>
-                            <div class="col-md-9">
+                            <div class="col-md-3">
+                                <h5><b>PROJECT TYPE:</b></h5>
+                            </div>
+                            <div class="col-md-3">
                                 <ul>
                                     <li th:remove="all">Demo</li>
                                     <li th:remove="all">Reno</li>
-                                    <li th:each="projectType : ${record.projectTypes}" th:text="${projectType.getDescription()}">New</li>
+                                    <li th:each="projectType : ${record.projectTypes}"
+                                        th:text="${projectType.getDescription()}">New</li>
                                 </ul>
                             </div>
                         </div>
+                    </br>
                         <div class="row">
                             <div class="col-md-3">
-                                <h5>Building Type:</h5>
+                                <p><b>BUILDING TYPE:</b></p>
                             </div>
                             <div class="col-md-3">
                                 <p th:text="${record.buildingType}">Apartment</p>
                             </div>
                             <div class="col-md-3">
-                                <h5>Estimator:</h5>
+                                <p><b>ESTIMATOR:</b></p>
                             </div>
                             <div class="col-md-3">
                                 <p th:text="${record.estimator}">Carlos Sammuel</p>
@@ -55,13 +80,13 @@
                         </div>
                         <div class="row">
                             <div class="col-md-3">
-                                <h5>Estimation Date:</h5>
+                                <p><b>ESTIMATION DATE:</b></p>
                             </div>
                             <div class="col-md-3">
                                 <p th:text="${record.dateToday}">3/22/2012</p>
                             </div>
                             <div class="col-md-3">
-                                <h5>Work Scope:</h5>
+                                <p><b>WORK SCOPE:</b></p>
                             </div>
                             <div class="col-md-3">
                                 <p th:text="${record.workScope}">Bathroom</p>
@@ -69,13 +94,13 @@
                         </div>
                         <div class="row">
                             <div class="col-md-3">
-                                <h5>Est. Start Date:</h5>
+                                <p><b>EST. START DATE:</b></p>
                             </div>
                             <div class="col-md-3">
                                 <p th:text="${record.dateStart}">11/23/2010</p>
                             </div>
                             <div class="col-md-3">
-                                <h5>Duration</h5>
+                                <p><b>DURATION:</b></p>
                             </div>
                             <div class="col-md-3">
                                 <p th:text="${record.duration}">14 days</p>
@@ -85,8 +110,15 @@
                 </div>
                 <div class="panel panel-primary">
                     <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-md-11 ">
                         <h1 class="panel-title" >Materials</h1>
                     </div>
+                    <div class="col-md-1">
+                        <a class="btn btn-default btn-xs" href="#" th:href="@{'/record/' + ${record.id} + '/materials'}" role="button">View</a>
+                    </div>
+                    </div>
+                </div>
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-12">
@@ -94,7 +126,8 @@
                                     <li th:remove="all">1 box of screw(sample)</li>
                                     <li th:each="material : ${record.materials}"
                                         th:text="${material.getDescription() +
-                                        '   ------   ' + material.getAmount() + ' ' + material.uom.getDescription()}">Screw</li>
+                                        ' ' + ' ' + ' ' + '-' + ' ' + ' ' + ' '
+                                        + material.getAmount() + ' ' + material.uom.getDescription()}">Screw</li>
                                 </ul>
                             </div>
                         </div>

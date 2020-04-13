@@ -8,6 +8,13 @@ import java.util.Set;
 public interface RecordService {
 
     Set<Record> getRecords();
-    Record findById(long l);
+
+    Record findById(Long l);
+
     RecordCommand saveRecordCommand(RecordCommand command);
+
+    RecordCommand findCommandById(Long l);
+
+    void deleteById(Long idToDelete);
+
 }
