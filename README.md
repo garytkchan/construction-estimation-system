@@ -6,7 +6,7 @@ systematically.
 
 ## Technogies applied for this project
 
-This project was developed in Java, implemented Spring MVC backend with JPA Repository to support CRUD functions. 
+This project was developed in Java, implemented Spring MVC backend with JPA Repository to support CRUD functions.__
 Hibernate 5 was used to map domain models to the MySQL database. 
 For the frontend, it took advantage of Thymeleaf with HTML/CSS to display construction projects lists and info.
 
