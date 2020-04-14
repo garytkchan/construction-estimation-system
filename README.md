@@ -13,4 +13,5 @@ projects lists and info.
 ## Start Guide
 
 Run the project with a IDE that supports Java(IntelliJ Idea, Eclipse, etc)
+
 Open [localhost:8080](localhost:8080) to view it in the browser.
